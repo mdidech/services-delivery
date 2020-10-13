@@ -25,5 +25,5 @@
 body {
   font-family: var(--ff-primary);
   color: var(--darkBlack);
-  background: var(--primaryColor-2);
+  /* background: var(--primaryColor-2); */
 }
