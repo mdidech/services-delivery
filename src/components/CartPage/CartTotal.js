@@ -10,7 +10,8 @@ const CartTotal = () => {
     cartTotal,
     cart,
     authUser,
-    currentUser
+    currentUser,
+    getCommandes
   } = useContext(ServiceContext);
   const [auth, setAuth] = useState("/moncompte");
 
@@ -27,13 +28,14 @@ const CartTotal = () => {
   const validCart = () => {
     if (cart.length> 0 && authUser) {
       firebase.collection("commandes").add({
-        progress: "en attente",
+        progress: "في الانتظار",
         order: commandes,
         total: cartTotal,
         user: authUser.email,
         date: new Date(),
       });
       clearCart();
+      getCommandes(authUser)
     }else{
       setAuth("/login");
     }

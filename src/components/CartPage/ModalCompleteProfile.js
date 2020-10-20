@@ -26,13 +26,13 @@ const ModalCompleteProfile = () => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle className="text-center text-danger font-weight-bold">
           {authUser
-            ? "compléter votre profile:adresse/telephone"
+            ? "الهاتف/العنوان البريدي"
             : "تسجيل الدخول"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
             {authUser
-              ? "svp, complétez votre profile avec : telephone et/ou adresse ...etc"
+              ? "من فضلك قم بادخال رقم الهاتف و العنوان"
               : "تسجيل الدخول ضروري لاتمام العملية"}
           </DialogContentText>
         </DialogContent>

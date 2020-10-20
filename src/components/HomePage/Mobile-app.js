@@ -4,7 +4,7 @@ import mobileapp from "../../img/mobileapp.jpg";
 const MobileApp = () => {
   return (
     <MovileAppWrapp>
-      <div className='container text-center '>
+      <div className='container text-center my-3 p-3'>
         <p className='title'>...قريبا</p>
         <div className='title-underline'></div>
         <img src={mobileapp} className='img-mobileapp m-5' alt='' />
@@ -13,6 +13,7 @@ const MobileApp = () => {
   );
 };
 const MovileAppWrapp = styled.section`
+background:#F9F9F9;
   .title {
     color: var(--primaryColor-3);
     font-size: 2rem;

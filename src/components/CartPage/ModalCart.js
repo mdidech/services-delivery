@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import { Link } from "react-router-dom";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -16,33 +15,32 @@ const ModalCart = ({ validCart, auth }) => {
   };
   return (
     <div>
-      <Button color='warning' onClick={handleClickOpen}>
-        <div className='main-link h6 mt-4'>
-          <small>valider mon panier</small>
-        </div>
-      </Button>
+
+        <button
+            className='btn btn-success my-4'
+            onClick={handleClickOpen}
+          >
+            تنفيذ الطلب
+          </button>
+    
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Confirmation</DialogTitle>
+        <DialogTitle className="text-right">تاكيد</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Avez-vous sure de passer cette commande
+            هل انت موافق لاتمام الطلب
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} className='bg-muted'>
-            Annuler
-          </Button>
-          <Button
-            onClick={() => {
+          <button onClick={handleClose} className='btn btn-outline-danger mx-auto'>
+            الغاء
+          </button>
+            <Link to={auth} className='btn btn-outline-success mx-auto' onClick={() => {
               validCart();
               handleClose();
-            }}
-            className='bg-success'
-          >
-            <Link to={auth} className='text-white'>
-              Valider
+            }}>
+              موافق
             </Link>
-          </Button>
+         
         </DialogActions>
       </Dialog>
     </div>

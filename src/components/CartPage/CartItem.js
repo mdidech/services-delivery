@@ -1,8 +1,6 @@
 import React from "react";
 import {
   FaTrash,
-  FaChevronCircleUp,
-  FaChevronCircleDown,
 } from "react-icons/fa";
 import styled from "styled-components"
 

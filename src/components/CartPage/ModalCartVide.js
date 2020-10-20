@@ -22,7 +22,7 @@ const ModalCart = () => {
           </button>
       <Dialog open={open} onClose={handleClose}>
         <div className='bg-white'>
-          <DialogTitle className="text-center text-danger font-weight-bold">خطأ</DialogTitle>
+          <DialogTitle className="text-center text-danger font-weight-bold">خطأ</DialogTitle> 
           <DialogContent>
             <DialogContentText>
             لا يوجد اي شيء في سلة المشتريات 
@@ -30,7 +30,7 @@ const ModalCart = () => {
           </DialogContent>
           <DialogActions>
             <button onClick={handleClose} className='mx-auto btn btn-outline-warning text-center'>
-              d'accord
+              موافق
             </button>
           </DialogActions>
         </div>

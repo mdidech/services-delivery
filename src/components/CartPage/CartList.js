@@ -9,7 +9,7 @@ const CartList = () => {
       <div className='row'>
         <div className='col'>
           {cart.length === 0 ? (
-            <h1 className='text-title text-center my-4'>عربة التسوق فارغة  </h1>
+            <h1 className='text-title text-center mb-4 text-secondary'>عربة التسوق فارغة  </h1>
           ) : (
             <>
               {cart.map((item) => (

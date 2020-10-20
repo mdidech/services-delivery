@@ -21,6 +21,7 @@ const SubCategoriesPage = () => {
 };
 
 const SubcategoriesPage = styled.section`
+  min-height:80vh;
   .maplinks {
     font-size: 0.75rem;
     color: var(--DarkGrey);

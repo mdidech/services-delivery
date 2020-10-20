@@ -20,6 +20,7 @@ const ProduitsPage = () => {
 };
 
 const ProduitPageWrapper = styled.section`
+  min-height:80vh;
   .maplinks {
     font-size: 0.75rem;
     color: var(--DarkGrey);

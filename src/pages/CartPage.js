@@ -1,5 +1,5 @@
 import React from 'react'
-import Cart from "../components/CartPage/Cart"
+import Cart from "../components/CartPage/Cart";
 const CartPage = () => {
   return (
     <div>
@@ -8,4 +8,4 @@ const CartPage = () => {
   )
 }
 
-export default CartPage
+export default CartPage;

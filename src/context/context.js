@@ -15,69 +15,82 @@ const ServiceProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({});
   const [userDocId, setUserDocId] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [userCommandes, setUserCommandes] = useState([]);
+  const [commandeAttente, setCommandeAttente] = useState([]);
 
   //recuperer les données depuis la base de données.
   useEffect(() => {
     try {
+      const unsubscribe = firebaseAuth.onAuthStateChanged(async (user) => {
+        if (user) {
+          // recuperer l'utilisateur déja connecté
+          await setAuthUser(user);
+          await fetchUser(user);
+        
+        } else {
+          await setAuthUser(null);
+        }
+      });
       getData().then(() => {
         setIsLoading((prevState) => {
 
           return !prevState;
         });
       });
-      const unsubscribe = firebaseAuth.onAuthStateChanged(async (user) => {
-        if (user) {
-          // recuperer l'utilisateur déja connecté
-          await setAuthUser(user);
-          await fetchUser(user);
-        } else {
-          await setAuthUser(null);
-        }
-      });
+      
+     
       return () => {
         unsubscribe();
+       
       };
+
     } catch (error) {
       console.log(error);
     }
     // eslint-disable-next-line
   }, []);
   const getData = async () => {
-    setIsLoading(true);
-    await firebase
-      .collection("categories")
-      .orderBy("id")
-      .onSnapshot((snapShot) => {
-        const tempCategories = snapShot.docs.map((doc) => {
-          return { ...doc.data(), docId: doc.id };
+    try{
+      setIsLoading(true);
+      await firebase
+        .collection("categories")
+        .orderBy("id")
+        .onSnapshot((snapShot) => {
+          const tempCategories = snapShot.docs.map((doc) => {
+            return { ...doc.data(), docId: doc.id };
+          });
+          setCategories(tempCategories);
         });
-        setCategories(tempCategories);
-      });
-    await firebase
-      .collection("sous-categories")
-      .orderBy("id")
-      .onSnapshot((snapShot) => {
-        const tempSubCategories = snapShot.docs.map((doc) => {
-          return { ...doc.data(), docId: doc.id };
+      await firebase
+        .collection("sous-categories")
+        .orderBy("id")
+        .onSnapshot((snapShot) => {
+          const tempSubCategories = snapShot.docs.map((doc) => {
+            return { ...doc.data(), docId: doc.id };
+          });
+  
+          setsubCategories(tempSubCategories);
         });
-
-        setsubCategories(tempSubCategories);
-      });
-    await firebase
-      .collection("produits")
-      .orderBy("id")
-      .onSnapshot((snapShot) => {
-        const tempProduits = snapShot.docs.map((doc) => {
-          return { ...doc.data(), docId: doc.id };
+      await firebase
+        .collection("produits")
+        .orderBy("id")
+        .onSnapshot((snapShot) => {
+          const tempProduits = snapShot.docs.map((doc) => {
+            return { ...doc.data(), docId: doc.id };
+          });
+          setProduits(tempProduits);
+          setCart(getStorageCart());
+          if (getStorageCart().length > 0) {
+            addTotals(getStorageCart());
+          }
         });
-        setProduits(tempProduits);
-        setCart(getStorageCart());
-        if (getStorageCart().length > 0) {
-          addTotals(getStorageCart());
-        }
-      });
-    return;
+       
+      return;
+    }catch (err){
+        console.log(err)
+    } 
   };
+
   // cette fonction va retourner 2 variables:  total de la cart et le nombres des éléments dans la cart
   const getTotals = (tempcart) => {
     let total = 0;
@@ -88,9 +101,6 @@ const ServiceProvider = ({ children }) => {
         cartElements += 1;
       });
     }
-    // } else {
-    //   cartElements += 1;
-    // }
     total = parseFloat(total.toFixed(2));
     return {
       cartElements,
@@ -134,6 +144,7 @@ const ServiceProvider = ({ children }) => {
       return;
     });
   };
+
   const getStorageCart = () => {
     let tempCart;
     if (localStorage.getItem("cart")) {
@@ -143,37 +154,38 @@ const ServiceProvider = ({ children }) => {
     }
     return tempCart;
   };
+  
   const setAlerts = (alert) => {
     setAlert(alert);
     setTimeout(() => setAlert(null), 5000);
   };
+
   const getUser = (user) => {
     try {
-      // firebase
-      //   .collection("users")
-      //   .where("email", "==", user.email)
-      //   .get()
-      //   .then(async (snapshot) => {
-      //     const docs = await snapshot.docs.map((doc) => {
-      //       return doc;
-      //     });
-      //     if (docs.length > 0) {
-      //       setUserDocId(docs[0].id);
-      //       setCurrentUser(docs[0].data());
-      //     } else {
-      //       console.log("aucune commande n'existe");
-      //     }
-      //   });
+      firebase
+        .collection("users")
+        .where("email", "==", user.email)
+        .get()
+        .then(async (snapshot) => {
+          const docs = await snapshot.docs.map((doc) => {
+            return doc;
+          });
+          if (docs.length > 0) {
+            setUserDocId(docs[0].id);
+            setCurrentUser(docs[0].data());
+          } else {
+            console.log("aucune commande n'existe");
+          }
+        });
  
     } catch (error) {
       console.log(error);
     }
   };
-  async function fetchUser() {
-    await getUser();
-    // this.getOrders();
-    // this.getUserOrder();
-    // this.GetOrderPanding();
+
+  async function fetchUser(user) {
+    await getUser(user);
+    await getCommandes(user);
     return;
   }
   const logoutUser = () => {
@@ -233,6 +245,40 @@ const clearCart = () => {
     return;
   });
 };
+const getCommandes = (user) => {
+  try {
+    firebase
+      .collection("commandes")
+      .where("user", "==", user.email)
+      .get()
+      .then(async (snapshot) => {
+        let docs = await snapshot.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        });
+        if (docs.length !== 0) {
+          setUserCommandes(docs);
+        } else {
+          setUserCommandes([]);
+          setCommandeAttente([])
+        }
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
+const removeCommande = (id) => {
+  firebase
+        .collection("commandes")
+        .doc(id)
+        .delete()
+        .then(function () {
+          console.log("Document successfully deleted!");
+        })
+        .catch(function (error) {
+          console.error("Error removing document: ", error);
+        });
+        getCommandes(authUser);
+};
   return (
     <ServiceContext.Provider
       value={{
@@ -255,7 +301,12 @@ const clearCart = () => {
         decrement,
         removeItem,
         clearCart,
-        currentUser
+        currentUser,
+        getUser,
+        getCommandes,
+        userCommandes,
+        commandeAttente,
+        removeCommande
       }}
     >
       {children}

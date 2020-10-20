@@ -4,8 +4,8 @@ import { FaUserPlus, FaSearchPlus } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 const Services = () => {
   return (
-    <ServicesWrapp className='container-fluid'>
-      <div className='row flex-row-reverse'>
+    <ServicesWrapp className='container-fluid p-0'>
+      <div className='row flex-row-reverse m-0'>
         <article className='service col-md-4'>
           <span className='service-icon'>
             <FaUserPlus />
@@ -33,6 +33,7 @@ const ServicesWrapp = styled.section`
   background: var(--white);
   text-align: center;
   .service {
+    height:100%;
     padding: 2.5rem 0;
     text-align: center;
     transition: var(--mainTransition);

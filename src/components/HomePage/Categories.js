@@ -9,7 +9,7 @@ const Categories = () => {
 
   return (
     <CategoriesWrapp>
-      <div className='container categories my-3 p-3'>
+      <div className='container categories p-3'>
         <p className='title'>تسوق حسب التصنيف</p>
         <div className='title-underline'></div>
         <div className='row mt-5 justify-content-around'>
@@ -39,6 +39,7 @@ const Categories = () => {
 };
 
 const CategoriesWrapp = styled.section`
+background:#F9F9F9;
   .categories {
     text-align: center;
     /* border: 1px solid var(--primaryColor-3); */
