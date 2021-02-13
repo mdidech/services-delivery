@@ -15,7 +15,7 @@ const ProduitsBySubCategorie = ({ sousCategorie }) => {
     // eslint-disable-next-line
   }, [produits]);
   const handleChange = (e) => {
-    const tempProduits = Produits.filter((produit) => { 
+    const tempProduits = Produits.filter((produit) => {
       return produit.titre.includes(e.target.value);
     });
     if (e.target.value === "") {

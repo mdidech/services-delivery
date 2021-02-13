@@ -21,11 +21,14 @@ const ServiceProvider = ({ children }) => {
   //recuperer les données depuis la base de données.
   useEffect(() => {
     try {
+      setIsLoading(true)
       const unsubscribe = firebaseAuth.onAuthStateChanged(async (user) => {
         if (user) {
           // recuperer l'utilisateur déja connecté
+          
           await setAuthUser(user);
           await fetchUser(user);
+          await setIsLoading(false)
         
         } else {
           await setAuthUser(null);
@@ -184,12 +187,14 @@ const ServiceProvider = ({ children }) => {
   };
 
   async function fetchUser(user) {
+    setIsLoading(true)
     await getUser(user);
     await getCommandes(user);
     return;
   }
   const logoutUser = () => {
     setAuthUser(null);
+    setIsLoading(true)
     setCurrentUser(null);
   };
   // pour ouvrir et fermer le side bar
@@ -262,8 +267,16 @@ const getCommandes = (user) => {
           setCommandeAttente([])
         }
       });
+      setIsLoading((prevState) => {
+
+        return !prevState;
+      });
   } catch (error) {
     console.log(error);
+    setIsLoading((prevState) => {
+
+      return !prevState;
+    });
   }
 };
 const removeCommande = (id) => {

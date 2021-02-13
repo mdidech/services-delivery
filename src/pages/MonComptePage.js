@@ -13,6 +13,7 @@ import AdressDelivery from "../components/ComptePage/AdresseDelivery"
 import HistoriqueDesCommandes from "../components/ComptePage/HistoriqueDesCommandes"
 import CommandesEnAttente from "../components/ComptePage/CommandesEnAttente"
 import { ServiceContext } from "../context/context";
+import Loading from "../components/Loading";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -71,10 +72,9 @@ const MonComptePage=()=> {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
-
   return (
     <>
-    {authUser ? (<MonCompteWrapp className={classes.root}>
+    {authUser? (<MonCompteWrapp className={classes.root}>
        <p className='title'>...حسابي</p>
         <div className='title-underline'></div>
       <AppBar position="static" color="default">
@@ -111,10 +111,11 @@ const MonComptePage=()=> {
         </TabPanel>
         
       </SwipeableViews>
-    </MonCompteWrapp>):(
-      <Redirect to="/" />
-    )
-
+    </MonCompteWrapp>):
+(
+  <Redirect to="/" />
+  // <Loading />
+)
     }
     </>
     

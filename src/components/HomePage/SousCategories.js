@@ -6,8 +6,8 @@ import Loading from "../Loading";
 const SousCategories = () => {
   const { subCategories, isLoading } = useContext(ServiceContext);
   return (
-    <SubCategorieswrapp>
-      <div className='container categories my-3 p-3'>
+    <SubCategorieswrapp id='sousCategories'>
+      <div className='container categories my-3 p-3 '>
         <p className='title'>تسوق حسب الفئة</p>
         <div className='title-underline'></div>
         <div className='row  align-items-center mt-5'>

@@ -20,7 +20,7 @@ const ProduitsByCategorie = ({ categorie }) => {
 };
 
 const CategorieWrapper = styled.article`
- .card {
+  .card {
     border-radius: 5px;
     width: 65vw;
     margin: 1rem auto;
@@ -31,10 +31,11 @@ const CategorieWrapper = styled.article`
     text-align: center;
     color: var(--primaryColor-3);
   }
-   
+
   @media screen and (min-width: 768px) {
     .card {
       width: 80%;
+    }
   }
 `;
 

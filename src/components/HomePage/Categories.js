@@ -39,7 +39,7 @@ const Categories = () => {
 };
 
 const CategoriesWrapp = styled.section`
-background:#F9F9F9;
+  background: #f9f9f9;
   .categories {
     text-align: center;
     /* border: 1px solid var(--primaryColor-3); */
