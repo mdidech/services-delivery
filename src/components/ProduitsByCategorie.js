@@ -30,6 +30,7 @@ const CategorieWrapper = styled.article`
     font-size: 1.35rem;
     text-align: center;
     color: var(--primaryColor-3);
+    margin-bottom: 0px;
   }
 
   @media screen and (min-width: 768px) {
