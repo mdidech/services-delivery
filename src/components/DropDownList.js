@@ -60,9 +60,9 @@ export default function MonCompteMenus() {
   };
 
   return (
-    <WrappDiv>
+    <div>
       <Link
-        className='nav-item btn moncompte'
+        className='nav-item btn '
         aria-controls='customized-menu'
         aria-haspopup='true'
         onClick={handleClick}
@@ -98,25 +98,6 @@ export default function MonCompteMenus() {
           <ExitToAppIcon className='text-warning pl-1' />
         </StyledMenuItem>
       </StyledMenu>
-    </WrappDiv>
+    </div>
   );
 }
-
-const WrappDiv = Styled.div`
-
-.nav-item {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-  }
-   .moncompte {
-    padding: 0.25rem 1.25rem;
-    border: 1px solid orange;
-    border-radius: 25px;
-  }
-   .moncompte:hover {
-    background: var(--primaryColor-2);
-  }
-
-
-`;
