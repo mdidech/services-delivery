@@ -44,16 +44,18 @@ const WrappHeader = styled.div`
   .title {
     color: var(--white);
     font-size: 2.5rem;
+    color: rgba(255, 225, 255, 0.95);
   }
   .text {
     font-size: 1.5rem;
     color: var(--primaryColor-3);
   }
   .cta-btn {
-    background: var(--primaryColor-2);
+    /* background: var(--primaryColor-2); */
     color: white;
-    padding: 0.5em 1.25em;
+    padding: 0.25em 1.25em;
     border-radius: 25px;
+    border: 2px solid orange;
     text-decoration: none;
     display: inline-block;
     margin-top: 1em;
@@ -76,6 +78,7 @@ const WrappHeader = styled.div`
     }
     .title {
       font-size: 4rem;
+      font-weight: bold;
     }
     .text {
       font-size: 1.75rem;

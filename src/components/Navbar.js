@@ -19,12 +19,18 @@ const Navbar = () => {
           </Link>
           <div className='toggle-button'>
             {sidebarOpen ? (
-               <button onClick={handleSidebar} className="border-0 bg-transparent">
-               <CloseIcon className='close' />
-               </button>            
+              <button
+                onClick={handleSidebar}
+                className='border-0 bg-transparent'
+              >
+                <CloseIcon className='close' />
+              </button>
             ) : (
-              <button onClick={handleSidebar} className="border-0 bg-transparent">
-              <FaBars className='bars'  />
+              <button
+                onClick={handleSidebar}
+                className='border-0 bg-transparent'
+              >
+                <FaBars className='bars' />
               </button>
             )}
           </div>
@@ -171,7 +177,8 @@ const NavbarWrapper = styled.nav`
     }
     .navbar-list ul .nav-item {
       /* padding: 0.7rem 1rem; */
-      font-size: 15px;
+      font-size: 1.2px;
+      font-weight: bold;
     }
     .active {
       display: flex;
