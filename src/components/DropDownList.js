@@ -117,6 +117,9 @@ const WrappDiv = Styled.div`
     border: 1px solid orange;
     border-radius: 25px;
   }
+   .moncompte:hover {
+    background: var(--primaryColor-2);
+  }
 
 
 `;

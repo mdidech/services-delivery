@@ -117,6 +117,9 @@ const NavbarWrapper = styled.nav`
     border: 1px solid orange;
     border-radius: 25px;
   }
+  .login:hover {
+    background: var(--primaryColor-2);
+  }
   .toggle-button {
     display: none;
     position: absolute;
