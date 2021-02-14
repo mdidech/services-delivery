@@ -111,6 +111,7 @@ const NavbarWrapper = styled.nav`
     text-decoration: none;
     color: #fff;
     display: block;
+    padding: 0.25rem 1.25rem;
   }
   .login {
     padding: 0.25rem 1.25rem;
