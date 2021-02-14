@@ -114,7 +114,7 @@ const NavbarWrapper = styled.nav`
     text-decoration: none;
     color: #fff;
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1.25rem;
   }
   .toggle-button {
     display: none;
