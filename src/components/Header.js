@@ -53,7 +53,7 @@ const WrappHeader = styled.div`
     background: var(--primaryColor-2);
     color: white;
     padding: 0.5em 1.25em;
-    border-radius: 0.25rem;
+    border-radius: 25px;
     text-decoration: none;
     display: inline-block;
     margin-top: 1em;
@@ -75,10 +75,10 @@ const WrappHeader = styled.div`
       margin-right: 0;
     }
     .title {
-      font-size: 3.75rem;
+      font-size: 4rem;
     }
     .text {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
   }
 `;
