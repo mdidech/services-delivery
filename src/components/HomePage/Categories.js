@@ -67,6 +67,7 @@ const CategoriesWrapp = styled.section`
   h3 {
     text-align: center;
     color: var(--primaryColor-3);
+    margin-bottom: 0;
   }
   @media screen and (min-width: 768px) {
     .card {

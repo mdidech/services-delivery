@@ -47,7 +47,7 @@ const Navbar = () => {
                 </li>
               ) : (
                 <li>
-                  <Link to='/login' className='nav-item btn'>
+                  <Link to='/login' className='nav-item btn login'>
                     تسجيل الدخول
                   </Link>
                 </li>
@@ -111,6 +111,8 @@ const NavbarWrapper = styled.nav`
     text-decoration: none;
     color: #fff;
     display: block;
+  }
+  .login {
     padding: 0.25rem 1.25rem;
     border: 1px solid orange;
     border-radius: 25px;

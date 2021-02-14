@@ -62,7 +62,7 @@ export default function MonCompteMenus() {
   return (
     <WrappDiv>
       <Link
-        className='nav-item btn'
+        className='nav-item btn moncompte'
         aria-controls='customized-menu'
         aria-haspopup='true'
         onClick={handleClick}
@@ -108,6 +108,11 @@ const WrappDiv = Styled.div`
     text-decoration: none;
     color: #fff;
     display: block;
+    padding: 0.25rem 1.25rem;
+    border: 1px solid orange;
+    border-radius: 25px;
+  }
+   .moncompte {
     padding: 0.25rem 1.25rem;
     border: 1px solid orange;
     border-radius: 25px;
