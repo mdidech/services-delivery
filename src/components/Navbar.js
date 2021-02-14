@@ -47,10 +47,7 @@ const Navbar = () => {
                 </li>
               ) : (
                 <li>
-                  <Link
-                    to='/login'
-                    className='nav-item btn btn-outline-warning'
-                  >
+                  <Link to='/login' className='nav-item btn'>
                     تسجيل الدخول
                   </Link>
                 </li>
@@ -114,7 +111,9 @@ const NavbarWrapper = styled.nav`
     text-decoration: none;
     color: #fff;
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1.25rem;
+    border: 1px solid orange;
+    border-radius: 25px;
   }
   .toggle-button {
     display: none;
@@ -177,7 +176,7 @@ const NavbarWrapper = styled.nav`
     }
     .navbar-list ul .nav-item {
       /* padding: 0.7rem 1rem; */
-      font-size: 1.2px;
+      font-size: 1.2rem;
       font-weight: bold;
     }
     .active {

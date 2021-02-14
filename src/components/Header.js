@@ -44,7 +44,7 @@ const WrappHeader = styled.div`
   .title {
     color: var(--white);
     font-size: 2.5rem;
-    color: rgba(255, 225, 255, 0.95);
+    /* color: rgba(255, 225, 255, 0.95); */
   }
   .text {
     font-size: 1.5rem;
@@ -60,6 +60,7 @@ const WrappHeader = styled.div`
     display: inline-block;
     margin-top: 1em;
     font-size: 1.2rem;
+    font-weight: bold;
     transition: all 0.3s linear;
   }
   .cta-btn:hover {

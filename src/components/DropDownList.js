@@ -6,8 +6,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Link, useHistory } from "react-router-dom";
 import { firebaseAuth } from "../context/firebase";
 import { ServiceContext } from "../context/context";
-import PersonIcon from '@material-ui/icons/Person';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PersonIcon from "@material-ui/icons/Person";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import Styled from "styled-components";
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid #d3d4d5",
@@ -59,9 +60,9 @@ export default function MonCompteMenus() {
   };
 
   return (
-    <div>
+    <WrappDiv>
       <Link
-        className='nav-item btn btn-outline-warning'
+        className='nav-item btn'
         aria-controls='customized-menu'
         aria-haspopup='true'
         onClick={handleClick}
@@ -69,7 +70,7 @@ export default function MonCompteMenus() {
       >
         حسابي
       </Link>
-    
+
       <StyledMenu
         id='customized-menu'
         anchorEl={anchorEl}
@@ -84,7 +85,8 @@ export default function MonCompteMenus() {
             className='text-right text-info'
             onClose={handleClose}
             onClick={() => history.push("/moncompte")}
-          /><PersonIcon className="text-warning pl-1" />
+          />
+          <PersonIcon className='text-warning pl-1' />
         </StyledMenuItem>
         <StyledMenuItem onClick={handleClose}>
           <ListItemText
@@ -92,9 +94,24 @@ export default function MonCompteMenus() {
             className='text-right text-info'
             color=' #30526a'
             onClick={logout}
-          /><ExitToAppIcon className="text-warning pl-1" />
+          />
+          <ExitToAppIcon className='text-warning pl-1' />
         </StyledMenuItem>
       </StyledMenu>
-    </div>
+    </WrappDiv>
   );
 }
+
+const WrappDiv = Styled.div`
+
+.nav-item {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 0.25rem 1.25rem;
+    border: 1px solid orange;
+    border-radius: 25px;
+  }
+
+
+`;
