@@ -177,7 +177,7 @@ const NavbarWrapper = styled.nav`
     }
     .navbar-list ul .nav-item {
       /* padding: 0.7rem 1rem; */
-      font-size: 15px;
+      font-size: 1.5rem;
     }
     .active {
       display: flex;
